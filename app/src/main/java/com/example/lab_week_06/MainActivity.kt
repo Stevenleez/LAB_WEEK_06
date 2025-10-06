@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab_week_06.model.CatBreed
@@ -39,6 +40,11 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.VERTICAL, false)
 
+        //Instantiate ItemTouchHelper for the swipe to delete callback and
+        //attach it to the recycler view
+        val itemTouchHelper = ItemTouchHelper(catAdapter.swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+
         //Add data to the model list in the adapter
         catAdapter.setData(
             listOf(
@@ -62,6 +68,56 @@ class MainActivity : AppCompatActivity() {
                     "Curious George",
                     "Award winning investigator",
                     "https://cdn2.thecatapi.com/images/bar.jpg"
+                ),
+                // New cats below ↓↓↓
+                CatModel(
+                    Gender.Female,
+                    CatBreed.AmericanCurl,
+                    "Luna",
+                    "Loves chasing sunbeams and knocking over plants",
+                    "https://cdn2.thecatapi.com/images/MTY3ODIyMQ.jpg"
+                ),
+                CatModel(
+                    Gender.Male,
+                    CatBreed.ExoticShorthair,
+                    "Oscar",
+                    "Enjoys napping on keyboards and stealing socks",
+                    "https://cdn2.thecatapi.com/images/atp.jpg"
+                ),
+                CatModel(
+                    Gender.Female,
+                    CatBreed.BalineseJavanese,
+                    "Chloe",
+                    "A graceful cat with a queen complex",
+                    "https://cdn2.thecatapi.com/images/3kk.jpg"
+                ),
+                CatModel(
+                    Gender.Male,
+                    CatBreed.AmericanCurl,
+                    "Simba",
+                    "Brave, loyal, and always hungry for treats",
+                    "https://cdn2.thecatapi.com/images/3pj.jpg"
+                ),
+                CatModel(
+                    Gender.Unknown,
+                    CatBreed.ExoticShorthair,
+                    "Mochi",
+                    "Round and soft, rolls instead of walks",
+                    "https://cdn2.thecatapi.com/images/dlc.jpg"
+                ),
+                CatModel(
+                    Gender.Female,
+                    CatBreed.BalineseJavanese,
+                    "Nala",
+                    "Elegant dancer who loves attention",
+                    "https://cdn2.thecatapi.com/images/b1a.jpg"
+                ),
+                CatModel(
+                    Gender.Male,
+                    CatBreed.ExoticShorthair,
+                    "Leo",
+                    "Chillest cat in the world, loves jazz music",
+                    "https://cdn2.thecatapi.com/images/du7.jpg"
                 )
             )
         )
